@@ -9,14 +9,12 @@ A small collection of name generators bundled into an easy to use CLI.
 3. Optional flags to make names genative, patronymic etc. (Person X of Place Y, Person X, son/daughter of Person Y)
 
 ## Person Categories
+
+## Person Types
+- Latin Names
 - Biblical
 - Roman
 - Dwarf
-
-## Person Types
-- Ancient Greek Names
-- Latin / Imperial Names
-- Medieval style names
 
 ## Place Types
 1. Towns / Cities
