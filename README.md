@@ -8,7 +8,7 @@ A small collection of name generators bundled into an easy to use CLI.
 2. More dynamic generators (create names from collections of syllables rather than preselected words.)
 3. Optional flags to make names genative, patronymic etc. (Person X of Place Y, Person X, son/daughter of Person Y)
 
-## Person Categories
+## Person
 
 ## Person Types
 - Latin Names
