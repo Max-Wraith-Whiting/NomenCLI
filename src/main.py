@@ -1,6 +1,7 @@
 import itertools
 import typer
 import random
+import configparser
 
 app = typer.Typer()
 
@@ -24,6 +25,8 @@ def name():
     for word in selection:
         print(f"\t {count}. {word}")
         count += 1
+        
+    print("Enter 0 for to generate more names:")
     
     chosen_word = None
     while chosen_word not in range(1,count):
@@ -35,6 +38,18 @@ def name():
     print("\n Now that you have your word, try and say it. \n If you have trouble try adding some vowels around the troublesome parts.")
     word = selection[chosen_word - 1]
     print(f" {word} is an interesting choice to say the least.")
+
+@app.command()
+def person():
+    pass
+
+@app.command()
+def place():
+    pass
+
+@app.command()
+def thing():
+    pass
 
 if __name__ == "__main__":
     app()
