@@ -3,7 +3,14 @@ import typer
 import random
 import configparser
 
+import person
+import place
+import thing
+
 app = typer.Typer()
+app.add_typer(person.app, name="person")
+app.add_typer(place.app, name="place")
+app.add_typer(thing.app, name="thing")
 
 @app.command()
 def name():
@@ -41,6 +48,7 @@ def name():
 
 @app.command()
 def person():
+    # Further r
     pass
 
 @app.command()
