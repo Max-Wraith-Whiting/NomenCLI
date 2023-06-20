@@ -16,7 +16,7 @@ def load_csv_file(relative_file_path:Path):
     return data
     
 
-def save_to_abs_path(data: List, file_name: str, save_dir_path: Path = Path.cwd()):
+def save_to_abs_path(data: list, file_name: str, save_dir_path: Path = Path.cwd()):
     if save_dir_path.is_dir():
         with open(f"{file_name}.txt", "w") as file:
             file.writelines(data)
