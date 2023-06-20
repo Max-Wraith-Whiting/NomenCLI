@@ -2,10 +2,12 @@ import itertools
 import typer
 import random
 import configparser
+from  pathlib import Path
 
 import person
 import place
 import thing
+from helpers import load_csv_file, save_to_abs_path
 
 app = typer.Typer()
 app.add_typer(person.app, name="person")
@@ -45,11 +47,6 @@ def name():
     print("\n Now that you have your word, try and say it. \n If you have trouble try adding some vowels around the troublesome parts.")
     word = selection[chosen_word - 1]
     print(f" {word} is an interesting choice to say the least.")
-
-@app.command()
-def person():
-    # Further r
-    pass
 
 @app.command()
 def place():
