@@ -1,5 +1,5 @@
 # NomenCLI
-A fun little CLI toy for thinking up names for things.
+A small collection of name generators bundled into an easy to use CLI.
 
 **Much more to do before this even vaguely works...**
 
