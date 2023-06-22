@@ -12,6 +12,21 @@ app = typer.Typer()
 @app.command()
 def stub():
     print("person stub was called!")
+    
+@app.command()
+def biblical(amount_of_names: Annotated[Optional[int], typer.Argument(callback=amount_of_names_callback)] = 10,
+          save: Annotated[bool, typer.Option("--save", "-s")] = False):
+    
+    biblical_names = load_csv_file(Path("Biblical"))["biblical"]
+    
+    full_names = []
+    for i in range(amount_of_names):
+        name = choice(biblical_names)
+        print(name)
+        full_names.append(name)
+        
+    if save:
+        print("Saved this...")
 
 @app.command()
 def roman(amount_of_names: Annotated[Optional[int], typer.Argument(callback=amount_of_names_callback)] = 10,
