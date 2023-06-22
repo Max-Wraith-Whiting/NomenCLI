@@ -27,6 +27,31 @@ def biblical(amount_of_names: Annotated[Optional[int], typer.Argument(callback=a
         
     if save:
         print("Saved this...")
+        
+@app.command()
+def dwarf(amount_of_names: Annotated[Optional[int], typer.Argument(callback=amount_of_names_callback)] = 10,
+          sex: Annotated[bool, typer.Option("--male/--female", "-m/-f", help="Exclusively generate names of a certain sex.")] = None,
+          save: Annotated[bool, typer.Option("--save", "-s", help="Save the generated names to the configured save location.")] = False):
+    
+    data = load_csv_file(Path("Dwarf"))
+    
+    syllable_1, syllable_2, title_1, title_2 = data["syllable_1"], data["syllable_2"], data["title_1"], data["title_2"]
+    
+    if type(sex) is None:
+        suffix = data["suffix_male"] + data["suffix_female"]
+    elif sex:
+        suffix = data["suffix_male"]
+    else:
+        suffix = data["suffix_female"]
+    
+    full_names = []
+    for i in range(amount_of_names):
+            name = choice(syllable_1) + choice(syllable_2) + choice(suffix) + " " + choice(title_1) + choice(title_2)
+            print(name)
+            full_names.append(name)
+            
+    if save:
+        print("Saved...")
 
 @app.command()
 def roman(amount_of_names: Annotated[Optional[int], typer.Argument(callback=amount_of_names_callback)] = 10,
