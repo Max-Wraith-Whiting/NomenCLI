@@ -18,12 +18,12 @@ def load_csv_file(relative_file_path:Path):
     
     return data
 
-
-
-def save_to_abs_path(data: list, file_name: str):
+def save_to_path(data: list, file_name: str):
+    save_dir_path = get_save_dir()
     if save_dir_path.is_dir():
-        with open(f"{file_name}.txt", "a") as file:
-            file.writelines(data)
+        with open(save_dir_path / f"{file_name}.txt", "a") as file:
+            for name in data:
+                file.write(f"{name}\n")
     else:
         print("The given path is not to a directory!")
         

@@ -2,7 +2,7 @@
 import typer
 from pathlib import Path
 from random import choice
-from helpers import load_csv_file, amount_of_names_callback
+from helpers import load_csv_file, amount_of_names_callback, save_to_path
 from typing import Optional
 from typing_extensions import Annotated
 
@@ -12,7 +12,8 @@ app = typer.Typer()
     
 @app.command()
 def biblical(amount_of_names: Annotated[Optional[int], typer.Argument(callback=amount_of_names_callback)] = 10,
-          save: Annotated[bool, typer.Option("--save", "-s")] = False):
+          save: Annotated[bool, typer.Option("--save", "-s", help="Save the generated names to the configured save location.")] = False,
+          filename: Annotated[str, typer.Option(help="The specified filename if the --save/-s option is chosen.")] = "Names"):
     
     biblical_names = load_csv_file(Path("Biblical"))["biblical"]
     
@@ -23,7 +24,7 @@ def biblical(amount_of_names: Annotated[Optional[int], typer.Argument(callback=a
         full_names.append(name)
         
     if save:
-        print("Saved this...")
+        save_to_path(full_names, filename)
         
 @app.command()
 def dwarf(amount_of_names: Annotated[Optional[int], typer.Argument(callback=amount_of_names_callback)] = 10,

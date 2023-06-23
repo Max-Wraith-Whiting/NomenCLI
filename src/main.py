@@ -7,7 +7,7 @@ from  pathlib import Path
 import person
 import place
 import thing
-from helpers import load_csv_file, save_to_abs_path, amount_of_names_callback, get_save_dir
+from helpers import load_csv_file, save_to_path, amount_of_names_callback, get_save_dir
 from typing import Optional
 from typing_extensions import Annotated
 
