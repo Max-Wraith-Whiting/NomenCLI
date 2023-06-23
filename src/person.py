@@ -6,12 +6,9 @@ from helpers import load_csv_file, amount_of_names_callback
 from typing import Optional
 from typing_extensions import Annotated
 
+APP_NAME = "NomenCLI"
 
 app = typer.Typer()
-
-@app.command()
-def stub():
-    print("person stub was called!")
     
 @app.command()
 def biblical(amount_of_names: Annotated[Optional[int], typer.Argument(callback=amount_of_names_callback)] = 10,
@@ -55,7 +52,7 @@ def dwarf(amount_of_names: Annotated[Optional[int], typer.Argument(callback=amou
 
 @app.command()
 def roman(amount_of_names: Annotated[Optional[int], typer.Argument(callback=amount_of_names_callback)] = 10,
-          save: Annotated[bool, typer.Option("--save", "-s")] = False):
+          save: Annotated[bool, typer.Option("--save", "-s", help="Save the generated names to the configured save location.")] = False):
     
     #Load the csv data.
     data = load_csv_file(Path("Roman"))

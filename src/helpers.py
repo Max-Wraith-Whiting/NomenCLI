@@ -4,6 +4,8 @@ from pathlib import Path
 import csv
 import typer
 
+APP_NAME = "NomenCLI"
+
 def load_csv_file(relative_file_path:Path):   
     data_dir = Path.cwd().parent / "data" / relative_file_path
     data = {}
@@ -18,7 +20,7 @@ def load_csv_file(relative_file_path:Path):
 
 
 
-def save_to_abs_path(data: list, file_name: str, save_dir_path: Path = Path.cwd()):
+def save_to_abs_path(data: list, file_name: str):
     if save_dir_path.is_dir():
         with open(f"{file_name}.txt", "a") as file:
             file.writelines(data)
@@ -30,3 +32,7 @@ def amount_of_names_callback(amount_of_names: int):
         raise typer.BadParameter("You cannot have 0 or less names.")
     else:
         return amount_of_names
+    
+def get_save_dir():
+    config_file = Path(typer.get_app_dir(APP_NAME)) / "config.txt"
+    return Path(config_file.read_text())

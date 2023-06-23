@@ -1,6 +1,8 @@
 #Typer app for the place sub-command.
 import typer
 
+APP_NAME = "NomenCLI"
+
 app = typer.Typer()
 
 @app.command()
